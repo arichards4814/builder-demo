@@ -1,15 +1,17 @@
-import { SVG } from "./svg";
+import { SVG1 } from "./svg";
 
-export class SVGBuilder {
+export class SVGBuilder1 {
     _height: string; 
     _width: string; 
     _color: string;
     _outlineColor: string;
     _strokeWidth: string;
     _paths: Array<Array<{ x: number, y: number }>> = [];
+    _circle: string;
 
     html: string;
 
+    // circleSVG: Circle;
 
     height(height: string) {
         this._height = height;
@@ -53,9 +55,10 @@ export class SVGBuilder {
        
         svgParts.push(`</svg>`);
 
+
         this.html = svgParts.join('');
 
-        return new SVG(this);
+        return new SVG1(this);
     }
 
     getPoints(path: Array<{x: number, y: number}>){
@@ -65,5 +68,20 @@ export class SVGBuilder {
         })
         return pathString;
     }
+
+
+    ////
+    //// Builders within Builders
+    ////
+
+    // get circle(){
+    //     return new CircleBuilder1()
+    // }
+
+
+    // add to build
+    // if(this.circle){
+    //     svgParts.push(this.circle.html)
+    // }
 
 }
